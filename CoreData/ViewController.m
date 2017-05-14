@@ -7,8 +7,14 @@
 //
 
 #import "ViewController.h"
+#import "AppDelegate.h"
+#import "TaskPropertyObject.h"
+#import "TaskMO.h"
 
 @interface ViewController ()
+@property (strong, nonatomic) IBOutlet UITextField *nameActivityTxtField;
+@property (strong, nonatomic) IBOutlet UITextField *categoryActivityTxtField;
+@property (strong, nonatomic) IBOutlet UITextField *desciptionActivityTxtField;
 
 @end
 
@@ -17,6 +23,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+
+#pragma mark - Action
+
+- (IBAction)saveData:(id)sender {
 }
 
 

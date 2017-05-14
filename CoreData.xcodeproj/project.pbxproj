@@ -16,6 +16,8 @@
 		4100FB4D1EC635B900990B52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4100FB4B1EC635B900990B52 /* LaunchScreen.storyboard */; };
 		4100FB581EC635BA00990B52 /* CoreDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4100FB571EC635BA00990B52 /* CoreDataTests.m */; };
 		4100FB631EC635BA00990B52 /* CoreDataUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4100FB621EC635BA00990B52 /* CoreDataUITests.m */; };
+		4100FB721EC635D900990B52 /* TaskMO.m in Sources */ = {isa = PBXBuildFile; fileRef = 4100FB711EC635D900990B52 /* TaskMO.m */; };
+		4100FB751EC6361600990B52 /* TaskPropertyObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4100FB741EC6361600990B52 /* TaskPropertyObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,10 @@
 		4100FB5E1EC635BA00990B52 /* CoreDataUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4100FB621EC635BA00990B52 /* CoreDataUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataUITests.m; sourceTree = "<group>"; };
 		4100FB641EC635BA00990B52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4100FB701EC635D900990B52 /* TaskMO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskMO.h; sourceTree = "<group>"; };
+		4100FB711EC635D900990B52 /* TaskMO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskMO.m; sourceTree = "<group>"; };
+		4100FB731EC6361600990B52 /* TaskPropertyObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskPropertyObject.h; sourceTree = "<group>"; };
+		4100FB741EC6361600990B52 /* TaskPropertyObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskPropertyObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +119,10 @@
 				4100FB4E1EC635B900990B52 /* Info.plist */,
 				4100FB461EC635B900990B52 /* CoreData.xcdatamodeld */,
 				4100FB3A1EC635B900990B52 /* Supporting Files */,
+				4100FB701EC635D900990B52 /* TaskMO.h */,
+				4100FB711EC635D900990B52 /* TaskMO.m */,
+				4100FB731EC6361600990B52 /* TaskPropertyObject.h */,
+				4100FB741EC6361600990B52 /* TaskPropertyObject.m */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -279,6 +289,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4100FB751EC6361600990B52 /* TaskPropertyObject.m in Sources */,
+				4100FB721EC635D900990B52 /* TaskMO.m in Sources */,
 				4100FB481EC635B900990B52 /* CoreData.xcdatamodeld in Sources */,
 				4100FB421EC635B900990B52 /* ViewController.m in Sources */,
 				4100FB3F1EC635B900990B52 /* AppDelegate.m in Sources */,

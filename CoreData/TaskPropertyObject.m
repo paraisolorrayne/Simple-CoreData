@@ -9,5 +9,16 @@
 #import "TaskPropertyObject.h"
 
 @implementation TaskPropertyObject
-
+- (instancetype)initWithData:(NSDictionary *)jsonDataObject {
+    self = [super init];
+    
+    if (self) {
+        _activityName = jsonDataObject[@"Name"];
+        _activityCategory = jsonDataObject[@"Category"];
+        _activityDescription = jsonDataObject [@"Description"];
+        
+    }
+    
+    return self;
+}
 @end

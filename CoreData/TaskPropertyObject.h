@@ -12,4 +12,5 @@
 @property (strong, nonatomic) NSString *activityName;
 @property (strong, nonatomic) NSString *activityDescription;
 @property (strong, nonatomic) NSString *activityCategory;
+- (instancetype)initWithData:(NSDictionary *)jsonDataObject;
 @end

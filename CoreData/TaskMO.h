@@ -9,7 +9,7 @@
 #import <CoreData/CoreData.h>
 
 @interface TaskMO : NSManagedObject
-@property (strong, nonatomic) NSString *activityName;
-@property (strong, nonatomic) NSString *activityDescription;
-@property (strong, nonatomic) NSString *activityCategory;
+@property (weak, nonatomic) NSString *activityName;
+@property (weak, nonatomic) NSString *activityDescription;
+@property (weak, nonatomic) NSString *activityCategory;
 @end

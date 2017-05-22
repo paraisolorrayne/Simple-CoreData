@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "TaskPropertyObject.h"
 #import "TaskMO.h"
+#import "TableViewController.h"
 
 @interface ViewController () <UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *nameActivityTxtField;
@@ -23,43 +24,46 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.nameActivityTxtField.delegate = self;
+    self.nameActivityTxtField.returnKeyType = UIReturnKeyNext;
+    self.categoryActivityTxtField.delegate = self;
+    self.desciptionActivityTxtField.delegate = self;
     self.taskObj = [[TaskPropertyObject alloc]init];
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
 -(void)enterActivity {
-   // [_taskObj setActivityName:_nameActivityTxtField.text];
     _taskObj.activityName = _nameActivityTxtField.text;
-    [_nameActivityTxtField resignFirstResponder];
-//    [_taskObj setActivityCategory:_categoryActivityTxtField.text];
-//    _taskObj.activityCategory = _categoryActivityTxtField.text;
-//    [_categoryActivityTxtField resignFirstResponder];
-//    [_taskObj setActivityDescription:_desciptionActivityTxtField.text];
-//    [_desciptionActivityTxtField resignFirstResponder];
+    _taskMO.activityName = _taskObj.activityName;
+    NSLog(@"%@", _taskMO.activityName);
+    _taskMO.activityName = _nameActivityTxtField.text;
+    NSLog(@"%@", _taskMO.activityName);
+    _taskObj.activityCategory = _categoryActivityTxtField.text;
+    _taskObj.activityDescription = _desciptionActivityTxtField.text;
 }
 
 -(void)transferObject {
     [self enterActivity];
-   // self.taskMO.activityName = _taskObj.activityName;
+    NSLog(@"%@", _taskMO);
     NSLog(@"%@", _taskMO.activityName);
-    //[_taskMO setActivityName:_taskObj.activityName];
+    _taskMO.activityName = _taskObj.activityName;
+    NSLog(@"%@", _taskMO.activityName);
+    [_taskMO setActivityName:_taskObj.activityName];
     NSLog(@"%@", _taskMO.activityName);
     [_taskMO setValue:_taskObj.activityName forKey:@"Name"];
     NSLog(@"%@", _taskMO.activityName);
-    //[_taskMO setActivityCategory:_taskObj.activityCategory];
-    //[_taskMO setActivityDescription:_taskObj.activityDescription];
 }
 
 -(void)saveActivityInCoreData {
+    [self enterActivity];
     AppDelegate *appDelegate = (AppDelegate *) UIApplication.sharedApplication.delegate;
     NSManagedObjectContext *context = appDelegate.persistentContainer.viewContext;
-    _taskMO = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:context];
-    [self transferObject];
-    NSLog(@"%@\n%@\n%@\n", _taskMO.activityName, _taskMO.activityCategory, _taskMO.activityDescription);
+    self.taskMO = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:context];
+    NSError *error = nil;
+    [context save:&error];
+    if (error) {
+        NSLog(@"%@", error);
+    }
 }
-
-
-
 
 #pragma mark - Action
 
@@ -74,14 +78,34 @@
                          style:UIAlertActionStyleCancel
                          handler:^(UIAlertAction *action) {
                              [view dismissViewControllerAnimated:YES completion:^{
+                                 
+                                 TableViewController *table = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"Table"];
+                                 [self.navigationController pushViewController:table animated:YES];
+                                 
                              }];
                          }];
     [view addAction:ok];
     [self presentViewController:view animated:YES completion:nil];
-    
-    
 }
 
+- (IBAction)dismissKeyboard:(UITapGestureRecognizer *)sender {
+    [_nameActivityTxtField resignFirstResponder];
+    [_categoryActivityTxtField resignFirstResponder];
+    [_desciptionActivityTxtField resignFirstResponder];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
+    if (theTextField == self.nameActivityTxtField || theTextField == self.categoryActivityTxtField || theTextField == self.desciptionActivityTxtField) {
+        [theTextField resignFirstResponder];
+    }
+    return YES;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    //hides keyboard when another part of layout was touched
+    [self.view endEditing:YES];
+    [super touchesBegan:touches withEvent:event];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

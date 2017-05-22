@@ -92,11 +92,6 @@
                                         <state key="normal" title="Save">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="corner_border">
-                                                <integer key="value" value="6"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="saveData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RQo-oZ-Uyd"/>
                                         </connections>
@@ -109,11 +104,15 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="Kmc-4w-gEd" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="4Hf-ST-7UJ"/>
+                            <constraint firstItem="Kmc-4w-gEd" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="9yU-GD-2NT"/>
                             <constraint firstAttribute="trailing" secondItem="Kmc-4w-gEd" secondAttribute="trailing" constant="6" id="b3V-bc-m28"/>
                             <constraint firstItem="Kmc-4w-gEd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="6" id="gKi-rG-gri"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="umj-44-FR6" appends="YES" id="yzZ-YA-p0f"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="categoryActivityTxtField" destination="x68-sO-x4U" id="6QV-Ud-c9H"/>
@@ -122,8 +121,41 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="umj-44-FR6">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="BYZ-38-t0r" id="iPm-kV-uTH"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="32.799999999999997" y="38.23088455772114"/>
+            <point key="canvasLocation" x="-347" y="10"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="pph-1C-FMO">
+            <objects>
+                <tableViewController storyboardIdentifier="Table" id="XKD-dS-cKn" customClass="TableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="rdH-BH-ihr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="0pl-68-Bk9">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0pl-68-Bk9" id="Jns-lD-rfv">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="XKD-dS-cKn" id="cNq-J3-ras"/>
+                            <outlet property="delegate" destination="XKD-dS-cKn" id="9v6-aW-Xnq"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fVu-oh-bsp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="708" y="36"/>
         </scene>
     </scenes>
 </document>
